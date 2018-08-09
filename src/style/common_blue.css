@@ -1,0 +1,57 @@
+/*整体布局*/
+*{
+	margin: 0;
+	padding: 0;
+}
+body{
+	color: #ffffff;
+}
+.appContainer{
+	display: flex;
+	flex-direction: column;
+	width: 100vw;
+	height: 100vh;
+}
+.header{
+	flex:1;
+	min-height: 60px;
+	max-height: 60px;
+	background-color: rgb(64, 158, 255);
+	font-size: 16px;
+}
+.mainContainer{
+	flex:9;
+	display: flex;
+}
+.mainLeft{
+	flex:2;
+	background-color: #ecf5ff;
+	font-size: 14px;
+}
+.mainRight{
+	flex:8;
+    color: black;
+    font-size: 14px;
+    padding: 20px;
+}
+
+/*app-header start*/
+.header-nav li.active{
+    color: #07fdfd;
+}
+/*app-header end*/
+
+/*left-menu start*/
+.leftMenuContainer a{
+    color: rgb(64, 158, 255);   
+}
+.first-nav-item{
+	color:rgb(64, 158, 255);
+}
+.second-nav-group.active{
+    background-color: rgba(64, 158, 255,.4);
+}
+.second-nav-group.active a{
+    color: #07fdfd;
+}
+/*left-menu end*/
