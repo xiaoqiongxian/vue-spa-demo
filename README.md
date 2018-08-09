@@ -27,5 +27,5 @@ Navigate to [http://loaclhost:8090](http://loaclhost:8090) or [http://127.0.0.1:
 
 ## 打包构建
 ```bash
-npm run prod
+npm run build
 ```
