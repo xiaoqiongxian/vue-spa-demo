@@ -12,6 +12,7 @@
               width="60">
             </el-table-column>
             <el-table-column
+              prop="name"
               sortable
               :label="t('vueDemo.label.name')"
               width="400">
@@ -20,6 +21,7 @@
               </template>
             </el-table-column>
             <el-table-column
+              prop="status"
               sortable
               :label="t('vueDemo.label.status')"
               width="400">
