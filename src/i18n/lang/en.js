@@ -24,7 +24,13 @@ export default{
 		label:{
 			name:"name",
 			status:"status",
-			operation:"operation"
+			operation:"operation",
+			weather:"weather",
+			chinese:"Chinese",
+			blue:"blue",
+			purple:"purple",
+			changeLanguage:"Switch language",
+			changeTheme:"Switch theme"
 		},
 		validateTip:{
 			needEnglish:"Please enter English!",

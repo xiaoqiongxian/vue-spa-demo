@@ -39,6 +39,20 @@ body{
 .header-nav li.active{
     color: #eb0de2;
 }
+.header-right .el-input__inner{
+	background: transparent;
+	color: #ffffff;
+	border: 1px solid transparent;
+}
+.header-right .el-select .el-input.is-focus .el-input__inner{
+	border-color: transparent;
+}
+.header-right .el-select .el-input__inner:focus {
+    border-color: transparent;
+}
+.header-right .el-select:hover .el-input__inner {
+    border-color: transparent;
+}
 /*app-header end*/
 
 /*left-menu start*/

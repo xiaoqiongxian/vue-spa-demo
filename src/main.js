@@ -18,7 +18,7 @@ Vue.use(service);
 Vue.use(validateExtend);
 
 //国际化方法，获取浏览器语言如果为英文，加载英文对应的资源串
-let language = sessionStorage.language || navigator.language;
+let language = localStorage.getItem("language");
 //let language = "en";
 if(language.indexOf("en") > -1){
 	Vue.use(ElementUI,{componentLocaleEn});

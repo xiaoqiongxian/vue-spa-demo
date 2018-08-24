@@ -1,7 +1,6 @@
 <template>
     <div>
-        <div>这是第二个页面</div>
-        <el-button type="primary" @click="test" size="medium">测试公共方法</el-button>
+        <el-button type="primary" @click="test" size="medium">test</el-button>
     </div>
 </template>
 <script>

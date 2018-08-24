@@ -15,7 +15,7 @@ module.exports = (options = {}) => ({
 		path:resolve(__dirname,"dist"),
 		filename:options.dev ? "js/[name].js" : "js/[name].js?[chunkhash]",
 		chunkFilename:"js/[name].js",
-		publicPath:options.dev ? "http://localhost:8090/assets/" : publicPath
+		publicPath:options.dev ? "http://127.0.0.1:8090/assets/" : publicPath
 	},
 	module:{
 		rules:[
@@ -80,7 +80,7 @@ module.exports = (options = {}) => ({
 			}
 		},
 		historyApiFallback:{
-			index:url.parse(options.dev?"http://localhost:8090/assets/":publicPath).pathname
+			index:url.parse(options.dev?"http://127.0.0.1:8090/assets/":publicPath).pathname
 		}
 	},
 	devtool:options.dev?"#inline-source-map":"#source-map"

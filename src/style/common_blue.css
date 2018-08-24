@@ -16,7 +16,7 @@ body{
 	flex:1;
 	min-height: 60px;
 	max-height: 60px;
-	background-color: rgb(64, 158, 255);
+	background-color: #195aa3;
 	font-size: 16px;
 }
 .mainContainer{
@@ -25,7 +25,7 @@ body{
 }
 .mainLeft{
 	flex:2;
-	background-color: #ecf5ff;
+	background-color: #1f60a9;
 	font-size: 14px;
 }
 .mainRight{
@@ -39,14 +39,28 @@ body{
 .header-nav li.active{
     color: #07fdfd;
 }
+.header-right .el-input__inner{
+	background: transparent;
+	color: #ffffff;
+	border: 1px solid transparent;
+}
+.header-right .el-select .el-input.is-focus .el-input__inner{
+	border-color: transparent;
+}
+.header-right .el-select .el-input__inner:focus {
+    border-color: transparent;
+}
+.header-right .el-select:hover .el-input__inner {
+    border-color: transparent;
+}
 /*app-header end*/
 
 /*left-menu start*/
 .leftMenuContainer a{
-    color: rgb(64, 158, 255);   
+    color: #ffffff;   
 }
 .first-nav-item{
-	color:rgb(64, 158, 255);
+	color: #ffffff;
 }
 .second-nav-group.active{
     background-color: rgba(64, 158, 255,.4);

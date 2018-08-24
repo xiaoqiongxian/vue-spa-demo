@@ -23,10 +23,10 @@
 	* 换肤功能函数
 	* common.css为默认主题下公共样式文件
 	* common-blue.css为蓝色（以蓝色为例，可以是其他任何颜色）主题下公共样式文件
-	* index.css为默认主题下element-ui组件样式文件，备注：element-ui组件样式从node_module>element-ui>lib>theme-chalk下拷贝出，
-	* 同时要将该目录下的fonts文件夹一起拷贝出来。
-	* index-blue.css为蓝色（以蓝色为例，可以是其他任何颜色）主题下element-ui组件样式文件，备注：可参考element-ui官网将主题颜色修改
-	* 后生成对应主题下的index.css文件，然后拷贝出修改文件名为index-blue.css
+	* index.css为默认主题下element-ui组件样式文件，备注：element-ui组件样式从node_module>element-ui>lib>
+	* theme-chalk下拷贝出，同时要将该目录下的fonts文件夹一起拷贝出来。
+	* index-blue.css为蓝色（以蓝色为例，可以是其他任何颜色）主题下element-ui组件样式文件，备注：可参考element-ui官网将主题
+	* 颜色修改后生成对应主题下的index.css文件，然后拷贝出修改文件名为index-blue.css
 	*/
 	let styleDefault1 = () => {
 		return require.ensure([],() => {
@@ -54,12 +54,12 @@
 	* true可以是任何判断当前主题的条件，
 	* 例如将主题颜色放到session中，if(localStorage.getItem("skinColor") === "default")
 	*/
-	if(true){
-		styleDefault1();
-		styleDefault2();
-	}else{
+	if(localStorage.getItem("themeColor") === "blue"){
 		styleBlue1();
 		styleBlue2();
+	}else{
+		styleDefault1();
+		styleDefault2();	
 	}
 
 	export default{
@@ -81,3 +81,7 @@
 		}
 	}
 </script>
+
+<style>
+@import "./style/font-awesome.min.css";
+</style>

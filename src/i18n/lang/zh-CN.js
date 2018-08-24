@@ -24,7 +24,13 @@ export default{
 		label:{
 			name:"名称",
 			status:"掌握程度",
-			operation:"操作"
+			operation:"操作",
+			weather:"天气",
+			chinese:"中文",
+			blue:"蓝色",
+			purple:"紫色",
+			changeLanguage:"切换语言",
+			changeTheme:"切换主题"
 		},
 		validateTip:{
 			needEnglish:"请输入英文",
