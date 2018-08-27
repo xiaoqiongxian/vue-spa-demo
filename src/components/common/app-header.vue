@@ -32,7 +32,6 @@
                 </el-option>
             </el-select>
         </span>
-        <span>{{weather}}</span>
         </div>
     </div>
 </template>
@@ -58,12 +57,11 @@
                     {value: 'purple',label: this.t("vueDemo.label.purple")},
                     {value: 'blue',label: this.t("vueDemo.label.blue")}
                 ],
-                theme:"",
-                weather:""
+                theme:""
             }
         },
         mounted:function(){
-            this.getWeather();
+
         },
         methods:  {
             changeLeft: function(flag) {
@@ -77,20 +75,6 @@
                     }
                 })
                 _self.$root.Bus.$emit('changeLeftMenu',selectedNav);
-            },
-            getWeather(){
-                let _self = this;
-                _self.$ajax.getWeather('/data/sk/101290405.html')
-                .then(function (response) {
-                    let weather = response.weatherinfo;
-                    _self.weather = _self.t("vueDemo.label.weather")+":"+weather.temp+"°C";
-                })
-                .catch(function (error) {
-                    _self.$notify.error({
-                        title: _self.t("vueDemo.common.fail"),
-                        message: _self.t("vueDemo.common.getFail")
-                    });
-                });
             },
             switchLanguage(){
                 localStorage.setItem("language",this.language);
@@ -135,9 +119,9 @@
         padding: 17px 50px 0 0;
     }
     .language-select{
-        width: 150px;
+        width: 140px;
     }
     .theme-select{
-        width: 150px;
+        width: 140px;
     }
 </style>

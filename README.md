@@ -25,6 +25,11 @@ npm run dev
 ```
 Navigate to [http://loaclhost:8090](http://loaclhost:8090) or [http://127.0.0.1:8090](http://127.0.0.1:8090)
 
+## 调用mock数据的rest接口（重新打开一个命令行窗口）
+```bash
+npm run mock
+```
+
 ## 打包构建
 ```bash
 npm run build

@@ -1,6 +1,6 @@
 <template>
     <div>
-        <el-dialog :title="t('vueDemo.common.edit')" :visible.sync="visible" size="tiny">
+        <el-dialog :title="t('vueDemo.common.edit')" :visible.sync="visible" size="tiny" @close="handelCancel">
 		  <el-form ref="editForm" :model="editForm" :rules="editFormRules" label-width="100px">
 		    <el-form-item :label="t('vueDemo.label.name')" prop="name">
 		      <el-input v-model="editForm.name"></el-input>
@@ -72,13 +72,37 @@
         methods:{
         	handelCancel(){
         		this.visible = false;
+                this.$refs["editForm"].resetFields();
+                this.$emit("handelCancel");
         	},
         	handelConfirm(){
         		let _self = this;
         		this.$refs["editForm"].validate((valid)=>{
         			if(valid){
-        				this.visible = false;
-        				_self.$emit("handelSuccess",_self.editForm);
+                        _self.$ajax.updateList('/api/lists/'+_self.editForm.id, _self.editForm)
+                        .then((response) => {
+                            if(response.code === "success"){
+                                _self.$emit("handelSuccess");
+                                _self.visible = false;
+                            }else{
+                              _self.$notify.error({
+                                title: _self.t("vueDemo.common.fail"),
+                                message: _self.t("vueDemo.common.editlFail")
+                              });
+                            }
+                        },(error) => {
+                          _self.$notify.error({
+                            title: _self.t("vueDemo.common.fail"),
+                            message: _self.t("vueDemo.common.editlFail")
+                          });
+                        })
+                        .catch(function (error) {
+                            _self.$notify.error({
+                                title: _self.t("vueDemo.common.fail"),
+                                message: _self.t("vueDemo.common.editlFail")
+                            });
+                        });
+
         			}
         		})
         	}

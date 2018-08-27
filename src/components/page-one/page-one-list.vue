@@ -44,8 +44,8 @@
             </el-table-column>
           </el-table>
         </div>
-        <page-one-add :showAddFlag="showAdd" @handelSuccess="addSuccess"></page-one-add>
-        <page-one-edit :showEditFlag="showEdit" :editData="editRow" @handelSuccess="editSuccess"></page-one-edit>
+        <page-one-add :showAddFlag="showAdd" @handelSuccess="addSuccess" @handelCancel="showAdd = false"></page-one-add>
+        <page-one-edit :showEditFlag="showEdit" :editData="editRow" @handelSuccess="editSuccess" @handelCancel="showEdit = false"></page-one-edit>
     </div>
 </template>
 
@@ -58,10 +58,7 @@
         mixins:[i18n],
         data() {
             return {
-                tableList: [
-                  {id:"1",name:"ES5",status:"熟练"},
-                  {id:"2",name:"ES6",status:"熟练"}
-                ],
+                tableList: [],
                 showAdd:false,
                 showEdit:false,
                 editRow:{}
@@ -71,37 +68,49 @@
           "page-one-add":pageOneAdd,
           "page-one-edit":pageOneEdit
         },
-        mounted:function(){
-
+        created:function(){
+          this.loadTableData();
         },
         methods:{ 
+          loadTableData(){
+            let _self = this;
+            _self.$ajax.getList('/api/lists')
+            .then((response) => {
+                if(response.code === "success"){
+                  _self.tableList = response.data;
+                }else{
+                  _self.$notify.error({
+                    title: _self.t("vueDemo.common.fail"),
+                    message: _self.t("vueDemo.common.getFail")
+                  });
+                }
+            },(error) => {
+              _self.$notify.error({
+                title: _self.t("vueDemo.common.fail"),
+                message: _self.t("vueDemo.common.getFail")
+              });
+            })
+            .catch(function (error) {
+                _self.$notify.error({
+                    title: _self.t("vueDemo.common.fail"),
+                    message: _self.t("vueDemo.common.getFail")
+                });
+            });
+          },
            showAddDialog(){
             this.showAdd = true;
            },
            addSuccess(addResult){
-              let _self = this;
               this.showAdd = false;
-              this.tableList.push(addResult);
-              _self.$notify.success({
-                  title: _self.t("vueDemo.common.success"),
-                  message: _self.t("vueDemo.common.addSuccess")
-              });
+              this.loadTableData();
            },
            showEditDialog(rowData){
             this.showEdit = true;
             this.editRow = rowData;
            },
            editSuccess(editResult){
-              let _self = this;
               this.showEdit = false;
-              this.tableList = this.tableList.filter((item)=>{
-                return item.id !== editResult.id;
-              });
-              this.tableList.push(editResult);
-              _self.$notify.success({
-                  title: _self.t("vueDemo.common.success"),
-                  message: _self.t("vueDemo.common.editSuccess")
-              });
+              this.loadTableData();
            },
            showConfirmDelete(deleteRow){
               let _self = this;
@@ -110,12 +119,27 @@
                 cancelButtonText: _self.t("vueDemo.common.cancel"),
                 type: 'warning'
               }).then(() => {
-                this.tableList = this.tableList.filter((item)=>{
-                  return item.id !== deleteRow.id;
-                });
-                _self.$notify.success({
-                  title: _self.t("vueDemo.common.success"),
-                  message: _self.t("vueDemo.common.delSuccess")
+                _self.$ajax.deleteList('/api/lists/'+deleteRow.id)
+                .then((response) => {
+                    if(response.code === "success"){
+                      this.loadTableData();
+                    }else{
+                      _self.$notify.error({
+                        title: _self.t("vueDemo.common.fail"),
+                        message: _self.t("vueDemo.common.delFail")
+                      });
+                    }
+                },(error) => {
+                  _self.$notify.error({
+                    title: _self.t("vueDemo.common.fail"),
+                    message: _self.t("vueDemo.common.delFail")
+                  });
+                })
+                .catch(function (error) {
+                    _self.$notify.error({
+                        title: _self.t("vueDemo.common.fail"),
+                        message: _self.t("vueDemo.common.delFail")
+                    });
                 });
               }).catch(() => {
                 console.log("cancel");

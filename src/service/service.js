@@ -64,10 +64,9 @@ export default{
 	/**
 	* getList 获取列表数据示例方法
 	* @param {String} url 请求地址
-	* @param {String} name 查询参数，例如搜索name为xxx的数据
 	*/
-	getList(url,name){
-		return $ajax.get(`${url}?name=${name}`)
+	getList(url){
+		return $ajax.get(url)
 	},
 
 	/**
@@ -76,7 +75,24 @@ export default{
 	* @param formData 表单数据
 	*/
 	addList(url,formData){
-		return $ajax.post(`${url}`,formData);
+		return $ajax.post(url,formData);
+	},
+
+	/**
+	* updateList 修改列表数据示例方法
+	* @param {String} url 请求地址
+	* @param formData 表单数据
+	*/
+	updateList(url,formData){
+		return $ajax.put(url,formData);
+	},
+
+	/**
+	* deleteList 删除列表数据示例方法
+	* @param {String} url 请求地址
+	*/
+	deleteList(url){
+		return $ajax.delete(url);
 	},
 
 	/**
@@ -84,7 +100,7 @@ export default{
 	* @param {String} url
 	*/
 	getWeather(url){
-		return $ajax.get(`${url}`)
+		return $ajax.get(url)
 	},
 
 	CancelToken:$ajax.CancelToken

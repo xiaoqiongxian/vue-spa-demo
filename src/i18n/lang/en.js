@@ -18,6 +18,9 @@ export default{
 			addSuccess:"Add successfully!",
 			editSuccess:"Edit successfully!",
 			delSuccess:"Delete successfully!",
+			addFail:"Failed to add!",
+			editlFail:"Failed to edit!",
+			delFail:"Failed to delete!",
 			getFail:"Failed to search!",
 			confirmDel:"Are you sure you want to delete {0}?"
 		},

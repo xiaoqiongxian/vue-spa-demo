@@ -18,6 +18,9 @@ export default{
 			addSuccess:"新增成功!",
 			editSuccess:"编辑成功!",
 			delSuccess:"删除成功!",
+			addFail:"新增失败!",
+			editlFail:"编辑失败!",
+			delFail:"删除失败!",
 			getFail:"查询失败!",
 			confirmDel:"此操作将删除{0}，确定吗？"
 		},

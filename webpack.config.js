@@ -72,7 +72,7 @@ module.exports = (options = {}) => ({
 		port:"8090",
 		proxy:{
 			"/dev/":{
-				target:"http://www.weather.com.cn",
+				target:"http://127.0.0.1:3000",
 				changeOrigin:true,
 				pathRewrite:{
 					"^/dev":""
