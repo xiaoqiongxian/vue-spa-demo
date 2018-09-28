@@ -1,6 +1,6 @@
 <template>
     <div>
-        <el-dialog :title="t('vueDemo.common.add')" :visible.sync="visible" size="tiny" @close="handelCancel">
+        <el-dialog :title="t('vueDemo.common.add')" :visible.sync="showAdd" size="tiny" @close="handelCancel">
 		  <el-form ref="addForm" :model="addForm" :rules="addFormRules" label-width="100px">
 		    <el-form-item :label="t('vueDemo.label.name')" prop="name">
 		      <el-input v-model="addForm.name"></el-input>
@@ -17,18 +17,16 @@
     </div>
 </template>
 <script>
+    import {mapState} from 'vuex';
     import i18n from "~/i18n/i18n.js";
+
     export default{
         mixins:[i18n],
     	props:{
-			showAddFlag:{
-				type:Boolean,
-				default:false
-			}
+			
     	},
         data() {
             return {
-                visible:false,
                 addForm:{
                 	name:"",
                 	status:""
@@ -44,23 +42,15 @@
                 }
             }
         },
-        created:function(){
-        	this.visible = this.showAddFlag;
-        },
-        watch:{
-        	showAddFlag(val){
-        		this.visible = val;
-        	}
-        },
-        components:{
-
-        },
-        mounted:function(){
-
+        computed:{
+            // 映射 this.showAdd 为 state.pageOne.showAdd
+            ...mapState({
+                showAdd: state => state.pageOne.showAdd
+            })
         },
         methods:{
         	handelCancel(){
-        		this.visible = false;
+                this.$store.commit("hidePageOneAdd");
                 this.$refs["addForm"].resetFields();
                 this.$emit("handelCancel");
         	},
@@ -72,7 +62,7 @@
                         .then((response) => {
                             if(response.code === "success"){
                               _self.$emit("handelSuccess");
-                              _self.visible = false;
+                              _self.$store.commit("hidePageOneAdd");
                             }else{
                               _self.$notify.error({
                                 title: _self.t("vueDemo.common.fail"),

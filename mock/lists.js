@@ -1,5 +1,3 @@
-// store products as database:
-
 var id = 0;
 
 function nextId() {

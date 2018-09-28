@@ -54,7 +54,7 @@
 	* true可以是任何判断当前主题的条件，
 	* 例如将主题颜色放到session中，if(localStorage.getItem("skinColor") === "default")
 	*/
-	if(localStorage.getItem("themeColor") === "blue"){
+	if(localStorage.getItem("themeColor") && localStorage.getItem("themeColor") === "blue"){
 		styleBlue1();
 		styleBlue2();
 	}else{
@@ -73,11 +73,39 @@
 			"left-menu":leftMenu,
 			"app-footer":appFooter
 		},
+		created:function(){
+        	this.getAuthData();
+        },
 		mounted:function(){
 
 		},
 		methods:{
-
+			//获取权限并初始化
+			getAuthData(){
+				let _self = this;
+				_self.$ajax.getAuth('/api/auth')
+	            .then((response) => {
+	                if(response.code === "success"){
+	                  	this.$store.commit('initPermission',response.data);
+	                }else{
+	                  _self.$notify.error({
+	                    title: _self.t("vueDemo.common.fail"),
+	                    message: _self.t("vueDemo.common.getFail")
+	                  });
+	                }
+	            },(error) => {
+	              _self.$notify.error({
+	                title: _self.t("vueDemo.common.fail"),
+	                message: _self.t("vueDemo.common.getFail")
+	              });
+	            })
+	            .catch(function (error) {
+	                _self.$notify.error({
+	                    title: _self.t("vueDemo.common.fail"),
+	                    message: _self.t("vueDemo.common.getFail")
+	                });
+	            });
+			}
 		}
 	}
 </script>

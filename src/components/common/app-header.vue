@@ -74,7 +74,7 @@
                          nav.status = "";
                     }
                 })
-                _self.$root.Bus.$emit('changeLeftMenu',selectedNav);
+                this.$store.commit('changeLeftMenu',selectedNav);
             },
             switchLanguage(){
                 localStorage.setItem("language",this.language);

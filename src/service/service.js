@@ -61,6 +61,14 @@ export default{
 		vue.prototype.$ajax = this;
 	},
 
+	/**s
+	* getAuth 获取权限数据
+	* @param {String} url 请求地址
+	*/
+	getAuth(url){
+		return $ajax.get(url)
+	},
+
 	/**
 	* getList 获取列表数据示例方法
 	* @param {String} url 请求地址

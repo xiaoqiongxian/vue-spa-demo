@@ -27,6 +27,7 @@ body{
 	flex:2;
 	background-color: #1f60a9;
 	font-size: 14px;
+	max-width: 260px;
 }
 .mainRight{
 	flex:8;

@@ -1,6 +1,6 @@
 <template>
     <div>
-        <el-dialog :title="t('vueDemo.common.edit')" :visible.sync="visible" size="tiny" @close="handelCancel">
+        <el-dialog :title="t('vueDemo.common.edit')" :visible.sync="showEdit" size="tiny" @close="handelCancel">
 		  <el-form ref="editForm" :model="editForm" :rules="editFormRules" label-width="100px">
 		    <el-form-item :label="t('vueDemo.label.name')" prop="name">
 		      <el-input v-model="editForm.name"></el-input>
@@ -17,15 +17,12 @@
     </div>
 </template>
 <script>
+    import {mapState} from 'vuex';
     import i18n from "~/i18n/i18n.js";
 
     export default{
         mixins:[i18n],
     	props:{
-			showEditFlag:{
-				type:Boolean,
-				default:false
-			},
 			editData:{
 				type:Object,
 				default:{}
@@ -33,7 +30,6 @@
     	},
         data: function () {
             return {
-                visible:false,
                 editForm:{
                 	id:"",
                 	name:"",
@@ -50,28 +46,21 @@
                 }
             }
         },
-        created:function(){
-        	this.visible = this.showEditFlag;
-        },
         watch:{
-        	showEditFlag(val){
-        		this.visible = val;
-        	},
         	editData(val){
         		this.editForm.id = val.id;
         		this.editForm.name = val.name;
         		this.editForm.status = val.status
         	}
         },
-        components:{
-
-        },
-        mounted:function(){
-
+        computed:{
+            ...mapState({
+                showEdit: state => state.pageOne.showEdit
+            })
         },
         methods:{
         	handelCancel(){
-        		this.visible = false;
+        		this.$store.commit("hidePageOneEdit");
                 this.$refs["editForm"].resetFields();
                 this.$emit("handelCancel");
         	},
@@ -83,7 +72,7 @@
                         .then((response) => {
                             if(response.code === "success"){
                                 _self.$emit("handelSuccess");
-                                _self.visible = false;
+                                this.$store.commit("hidePageOneEdit");
                             }else{
                               _self.$notify.error({
                                 title: _self.t("vueDemo.common.fail"),

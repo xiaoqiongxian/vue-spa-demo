@@ -1,8 +1,15 @@
 const lists = require('../lists');
+const auth = require('../auth');
 
 const APIError = require('../rest').APIError;
 
 module.exports = {
+    'GET /api/auth': async (ctx, next) => {
+        ctx.rest({
+            code:"success",
+            data: auth.getAuthData()
+        });
+    },
     'GET /api/lists': async (ctx, next) => {
         ctx.rest({
             code:"success",
