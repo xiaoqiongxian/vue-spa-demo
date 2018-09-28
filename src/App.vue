@@ -15,6 +15,7 @@
 </template>
 
 <script>
+	import i18n from "~/i18n/i18n.js";
 	import appHeader from './components/common/app-header.vue';
 	import leftMenu from './components/common/left-menu.vue';
 	import appFooter from './components/common/app-footer.vue';
@@ -63,6 +64,7 @@
 	}
 
 	export default{
+		mixins:[i18n],
 		data(){
 			return {
 
