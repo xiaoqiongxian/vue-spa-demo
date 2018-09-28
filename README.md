@@ -11,10 +11,10 @@
 ## 界面截图
 
 ### 中文紫色主题截图
-![中文紫色主题截图](https://github.com/xiaoqiongxian/vue-spa-demo/tree/master/src/images/1.PNG)
+![中文紫色主题截图](https://github.com/xiaoqiongxian/vue-spa-demo/blob/master/src/images/1.PNG)
 
 ### 英文蓝色主题截图
-![英文蓝色主题截图](https://github.com/xiaoqiongxian/vue-spa-demo/tree/master/src/images/2.PNG)
+![英文蓝色主题截图](https://github.com/xiaoqiongxian/vue-spa-demo/blob/master/src/images/2.PNG)
 
 ## 按照如下步骤clone代码并启动可以看到工程示例
 
