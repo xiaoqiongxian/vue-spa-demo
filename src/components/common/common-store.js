@@ -9,12 +9,16 @@ if(language && language.indexOf("en") > -1){
 
 export default {
     state:{
-        //权限
+        //权限相关
         permissionPageOneAdd:false,
         permissionPageOneEdit:false,
         permissionPageOneDelete:false,
-        //左侧导航
+        //导航相关
         selectedLeftNav:"javascript",
+        headerToLeft:{
+            "frontend":["pageOne","pageTwo"],
+            "backend":["pageThree"]
+        },
         menuList:
         [
             { "id": "M1", "name": i18n.t("vueDemo.nav.base"), "url": "", "menulist":

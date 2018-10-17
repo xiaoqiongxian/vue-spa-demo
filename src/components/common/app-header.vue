@@ -63,15 +63,18 @@
         mounted:function(){
 
         },
+        watch:{
+            
+        },
         methods:  {
-            changeLeft: function(flag) {
+            changeLeft(flag) {
                 var _self = this
                 var selectedNav = flag;
                 _self.headerNavList.map((nav)=>{
                     if(nav.value === selectedNav){
                         nav.status = "active";
                     }else{
-                         nav.status = "";
+                        nav.status = "";
                     }
                 })
                 this.$store.commit('changeLeftMenu',selectedNav);
@@ -89,39 +92,35 @@
     }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+    $tool-width:140px;
+
     .header-container{
         height: 100%;
         display:flex;
     }
-
     .header-nav{
         flex:1;
         display: flex;
         flex-direction: row;
         height: 100%;
         align-items: center;
-    }
-
-    .header-nav li{
-        margin: 20px;
-        list-style: none;
-        cursor: pointer
-    }
-
-    .header-nav li.active{
-        cursor: default;
-    }
-    
+        li{
+            margin: 20px;
+            list-style: none;
+            cursor: pointer;
+        }
+        li.active{
+            cursor: default;
+        }
+    }    
     .header-right{
         flex:1;
         text-align: right;
         padding: 17px 50px 0 0;
     }
-    .language-select{
-        width: 140px;
-    }
+    .language-select,
     .theme-select{
-        width: 140px;
+        width: $tool-width;
     }
 </style>

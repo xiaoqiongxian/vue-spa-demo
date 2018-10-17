@@ -23,7 +23,7 @@
 	/**
 	* 换肤功能函数
 	* common.css为默认主题下公共样式文件
-	* common-blue.css为蓝色（以蓝色为例，可以是其他任何颜色）主题下公共样式文件
+	* common-blue.css为蓝色（以蓝色为例，可以是其他任三何颜色）主题下公共样式文件
 	* index.css为默认主题下element-ui组件样式文件，备注：element-ui组件样式从node_module>element-ui>lib>
 	* theme-chalk下拷贝出，同时要将该目录下的fonts文件夹一起拷贝出来。
 	* index-blue.css为蓝色（以蓝色为例，可以是其他任何颜色）主题下element-ui组件样式文件，备注：可参考element-ui官网将主题
@@ -31,7 +31,7 @@
 	*/
 	let styleDefault1 = () => {
 		return require.ensure([],() => {
-			require("./style/common.css");
+			require("./style/common.scss");
 		})
 	}
 	let styleDefault2 = () => {
@@ -42,7 +42,7 @@
 
 	let styleBlue1 = () => {
 		return require.ensure([],() => {
-			require("./style/common_blue.css");
+			require("./style/common_blue.scss");
 		})
 	}
 	let styleBlue2 = () => {

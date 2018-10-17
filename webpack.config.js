@@ -30,6 +30,9 @@ module.exports = (options = {}) => ({
 				test:/\.css$/,
 				use:["style-loader","css-loader","postcss-loader"]
 			},{
+				test:/\.scss$/,
+				use:["style-loader","css-loader","sass-loader","postcss-loader"]
+			},{
 				test:/\.(png|jpg|jpeg|git|eot|ttf|woff|woff2|svg|svgz)(\?.+)?$/,
 				use:[{
 					loader:"url-loader",

@@ -40,17 +40,19 @@
     }
 </script>
 
-<style scoped>
-    .leftMenuContainer ul{
-        list-style: none; 
-        margin-top: 10px;
-    }
-    .leftMenuContainer li{
-        list-style: none; 
-    }
-    .leftMenuContainer a{
-        text-decoration: none;
-        margin-left: 60px;
+<style lang="scss" scoped>
+    .leftMenuContainer{
+        ul{
+            list-style: none; 
+            margin-top: 10px;
+        }
+        li{
+            list-style: none; 
+        }
+        a{
+            text-decoration: none;
+            margin-left: 60px;
+        }
     }
     .first-nav-item{
         padding-left: 20px;

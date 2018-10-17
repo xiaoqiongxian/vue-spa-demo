@@ -1,18 +1,33 @@
 <template>
     <div>
-     footer
+    	
     </div>
 </template>
 
 <script>
-    export default {
-        data() {
-            return {
-                
-            }
+	import i18n from "~/i18n/i18n.js";
+
+	export default{
+		mixins:[i18n],
+		data(){
+			return {
+
+			}
+		},
+		components:{
+			
+		},
+		created:function(){
+
         },
-        methods:  {
-            
-        }
-    }
+		mounted:function(){
+
+		},
+		methods:{
+			
+		}
+	}
 </script>
+<style>
+
+</style>

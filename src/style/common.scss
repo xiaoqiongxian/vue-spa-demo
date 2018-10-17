@@ -40,19 +40,23 @@ body{
 .header-nav li.active{
     color: #eb0de2;
 }
-.header-right .el-input__inner{
-	background: transparent;
-	color: #ffffff;
-	border: 1px solid transparent;
-}
-.header-right .el-select .el-input.is-focus .el-input__inner{
-	border-color: transparent;
-}
-.header-right .el-select .el-input__inner:focus {
-    border-color: transparent;
-}
-.header-right .el-select:hover .el-input__inner {
-    border-color: transparent;
+.header-right{
+	.el-input__inner{
+		background: transparent;
+		color: #ffffff;
+		border: 1px solid transparent;
+	}
+	.el-select{
+		.el-input.is-focus .el-input__inner{
+			border-color: transparent;
+		}
+		.el-input__inner:focus {
+		    border-color: transparent;
+		}
+		&:hover .el-input__inner {
+		    border-color: transparent;
+		}
+	}
 }
 /*app-header end*/
 
@@ -60,10 +64,14 @@ body{
 .leftMenuContainer a{
     color: #ffffff;    
 }
-.second-nav-group.active{
-    background-color: rgba(206,155,192,.4);
+.second-nav-group{
+	cursor: pointer;
 }
-.second-nav-group.active a{
-    color:#eb0de2
+.second-nav-group.active{
+	cursor: default;
+    background-color: rgba(206,155,192,.4);
+    a{
+	    color:#eb0de2
+	}
 }
 /*left-menu end*/
