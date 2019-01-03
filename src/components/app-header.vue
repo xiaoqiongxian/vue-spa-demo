@@ -1,7 +1,11 @@
 <template>
     <div class="header-container">
         <ul class="header-nav">
-            <li v-for="item in headerNavList" :class="item.status" @click="changeLeft(item.value)">{{item.text}}</li>
+            <li v-for="item in headerNavList" 
+                :key="item.value"
+                :class="item.status" 
+                @click="changeLeft(item.value)">{{item.text}}
+            </li>
         </ul>
         <div class="header-right">
         <span>

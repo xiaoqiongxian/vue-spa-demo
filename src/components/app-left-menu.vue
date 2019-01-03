@@ -1,13 +1,15 @@
 <template>
     <div class="leftMenuContainer">  
-        <li v-for="(item,key) in menuList">
+        <li v-for="(item,key) in menuList" 
+            :key="item.id">
             <span class="first-nav-item">{{item.name}}</span>
             <ul @click="selectLeftNav(data.name)" 
-                :class="selectedLeftNav===data.name?'active':''" 
+                :class="selectedLeftNav === data.name ? 'active' : ''" 
                 class="second-nav-group" 
-                v-for="(data,index) in item.menulist">
+                v-for="(data,index) in item.menulist"
+                :key="item.id">
                 <li>
-                    <a :href="data.url" class=''>{{data.name}}</a>
+                    <a :href="data.url">{{data.name}}</a>
                 </li>
             </ul>
         </li>
@@ -27,9 +29,9 @@
         },
         computed:{
             ...mapState({
-                selectedLeftNav: state => state.common.selectedLeftNav,
-                menuList: state => state.common.menuList,
-                menu: state => state.common.menu
+                selectedLeftNav: state => state.app.selectedLeftNav,
+                menuList: state => state.app.menuList,
+                menu: state => state.app.menu
             })
         },
         methods:  {

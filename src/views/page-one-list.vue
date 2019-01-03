@@ -1,6 +1,6 @@
 <template>
     <div>
-        <el-button v-if="permissionPageOneAdd" type="primary" @click="showAddDialog" size="medium">{{t('vueDemo.common.add')}}</el-button>
+        <el-button v-if="permissionPageOneAdd" type="primary" @click="showAddDialog" size="medium">{{t("vueDemo.common.add")}}</el-button>
         <div class="table-container">
           <el-table
             style="width: 100%"
@@ -37,26 +37,26 @@
                 <el-button
                   size="mini"
                   v-if="permissionPageOneEdit"
-                  @click="showEditDialog(scope.row)">{{t('vueDemo.common.edit')}}</el-button>
+                  @click="showEditDialog(scope.row)">{{t("vueDemo.common.edit")}}</el-button>
                 <el-button
                   size="mini"
                   type="danger"
                   v-if="permissionPageOneDelete"
-                  @click="showConfirmDelete(scope.row)">{{t('vueDemo.common.del')}}</el-button>
+                  @click="showConfirmDelete(scope.row)">{{t("vueDemo.common.del")}}</el-button>
               </template>
             </el-table-column>
           </el-table>
         </div>
         <page-one-add @handelSuccess="addSuccess"></page-one-add>
-        <page-one-edit :editData="editRow" @handelSuccess="editSuccess"></page-one-edit>
+        <page-one-edit :edit-data="editRow" @handelSuccess="editSuccess"></page-one-edit>
     </div>
 </template>
 
 <script>
-    import {mapState} from 'vuex';
+    import {mapState} from "vuex";
     import i18n from "~/i18n/i18n.js";
-    import pageOneAdd from "./page-one-add.vue";
-    import pageOneEdit from "./page-one-edit.vue";
+    import PageOneAdd from "./page-one-add.vue";
+    import PageOneEdit from "./page-one-edit.vue";
 
     export default{
         mixins:[i18n],
@@ -67,14 +67,14 @@
             }
         },
         components:{
-          "page-one-add":pageOneAdd,
-          "page-one-edit":pageOneEdit
+          "page-one-add":PageOneAdd,
+          "page-one-edit":PageOneEdit
         },
          computed:{
             ...mapState({
-                permissionPageOneAdd: state => state.common.permissionPageOneAdd,
-                permissionPageOneEdit: state => state.common.permissionPageOneEdit,
-                permissionPageOneDelete: state => state.common.permissionPageOneDelete
+                permissionPageOneAdd: state => state.app.permissionPageOneAdd,
+                permissionPageOneEdit: state => state.app.permissionPageOneEdit,
+                permissionPageOneDelete: state => state.app.permissionPageOneDelete
             })
         },
         created:function(){
@@ -107,13 +107,13 @@
             });
           },
            showAddDialog(){
-            this.$store.commit('showPageOneAdd');
+            this.$store.commit('pageOneShowAdd');
            },
            addSuccess(addResult){
               this.loadTableData();
            },
            showEditDialog(rowData){
-            this.$store.commit('showPageOneEdit');
+            this.$store.commit('pageOneShowEdit');
             this.editRow = rowData;
            },
            editSuccess(editResult){
@@ -126,7 +126,7 @@
                 cancelButtonText: _self.t("vueDemo.common.cancel"),
                 type: 'warning'
               }).then(() => {
-                _self.$ajax.deleteList('/api/lists/'+deleteRow.id)
+                _self.$ajax.deleteList(`/api/lists/${deleteRow.id}`)
                 .then((response) => {
                     if(response.code === "success"){
                       this.loadTableData();

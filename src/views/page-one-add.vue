@@ -10,14 +10,14 @@
 		    </el-form-item>
 		  </el-form>
 		  <div slot="footer" class="dialog-footer">
-		    <el-button @click="handelCancel">{{t('vueDemo.common.cancel')}}</el-button>
-		    <el-button type="primary" @click="handelConfirm">{{t('vueDemo.common.sure')}}</el-button>
+		    <el-button @click="handelCancel">{{t("vueDemo.common.cancel")}}</el-button>
+		    <el-button type="primary" @click="handelConfirm">{{t("vueDemo.common.sure")}}</el-button>
 		  </div>
 		</el-dialog>
     </div>
 </template>
 <script>
-    import {mapState} from 'vuex';
+    import {mapState} from "vuex";
     import i18n from "~/i18n/i18n.js";
 
     export default{
@@ -50,19 +50,20 @@
         },
         methods:{
         	handelCancel(){
-                this.$store.commit("hidePageOneAdd");
+                this.$store.commit("pageOneHideAdd");
                 this.$refs["addForm"].resetFields();
                 this.$emit("handelCancel");
         	},
         	handelConfirm(){
         		let _self = this;
+                console.log(_self.$store);
         		this.$refs["addForm"].validate((valid)=>{
         			if(valid){
-                        _self.$ajax.addList('/api/lists',_self.addForm)
+                        _self.$ajax.addList("/api/lists",_self.addForm)
                         .then((response) => {
                             if(response.code === "success"){
                               _self.$emit("handelSuccess");
-                              _self.$store.commit("hidePageOneAdd");
+                              _self.$store.commit("pageOneHideAdd");
                             }else{
                               _self.$notify.error({
                                 title: _self.t("vueDemo.common.fail"),

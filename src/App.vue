@@ -5,7 +5,7 @@
     	</div>
     	<div class="mainContainer">
     		<div class="mainLeft">
-	    		<left-menu></left-menu>
+	    		<app-left-menu></app-left-menu>
 	    	</div>
 	    	<div class="mainRight">
 	    		<router-view></router-view>
@@ -16,9 +16,9 @@
 
 <script>
 	import i18n from "~/i18n/i18n.js";
-	import appHeader from './components/common/app-header.vue';
-	import leftMenu from './components/common/left-menu.vue';
-	import appFooter from './components/common/app-footer.vue';
+	import AppHeader from './components/app-header.vue';
+	import AppLeftMenu from './components/app-left-menu.vue';
+	import AppFooter from './components/app-footer.vue';
 
 	/**
 	* 换肤功能函数
@@ -71,9 +71,9 @@
 			}
 		},
 		components:{
-			"app-header":appHeader,
-			"left-menu":leftMenu,
-			"app-footer":appFooter
+			"app-header":AppHeader,
+			"app-left-menu":AppLeftMenu,
+			"app-footer":AppFooter
 		},
 		created:function(){
         	this.getAuthData();
@@ -113,5 +113,5 @@
 </script>
 
 <style>
-@import "./style/font-awesome.min.css";
+	@import "./style/font-awesome.min.css";
 </style>

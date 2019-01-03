@@ -53,7 +53,7 @@ module.exports = (options = {}) => ({
 	resolve:{
 		alias:{
 			"~":resolve(__dirname,"src"),
-			"config$":options.dev ? resolve("src/config/config.dev.js"):resolve("src/config/config.production.js")
+			"config$":options.dev ? resolve("src/config/config.dev.js") : resolve("src/config/config.production.js")
 		}
 	},
 	optimization: {
@@ -83,8 +83,8 @@ module.exports = (options = {}) => ({
 			}
 		},
 		historyApiFallback:{
-			index:url.parse(options.dev?"http://127.0.0.1:8090/assets/":publicPath).pathname
+			index:url.parse(options.dev ? "http://127.0.0.1:8090/assets/" : publicPath).pathname
 		}
 	},
-	devtool:options.dev?"#inline-source-map":"#source-map"
+	devtool:options.dev ? "#inline-source-map" : "#source-map"
 })
